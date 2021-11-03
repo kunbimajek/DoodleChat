@@ -3,7 +3,7 @@
 *, *::before, *::after   
     box-sizing: border-box 
     font-family: 'Source Sans Pro', sans-serif
-    
+
 body
     position: relative
     background-image: url(/assets/images/bg.png)
@@ -80,3 +80,11 @@ body
             transition: background-color 1s
             &:hover 
                 background-color: #ff876d
+
+@media only screen and (max-width: 768px)
+    .input-group
+        padding: 0
+        .container
+            padding: 8px
+    .chat-box
+        max-width: 240px !important
