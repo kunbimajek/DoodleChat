@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap')
+
+*, *::before, *::after   
+    box-sizing: border-box 
+    font-family: 'Source Sans Pro', sans-serif
+    
+body
+    position: relative
+    background-image: url(/assets/images/bg.png)
+    height: 100vh
+    margin: 0
+
+.container 
+    max-width: 640px
+    padding: 0 24px
+    margin: auto
+
+.chat-wrapper
+    padding: 16px 0
+    .chat-box
+        border: 1px solid #dbdbd7
+        max-width: 420px
+        width: max-content
+        border-radius: 5px
+        padding: 16px 16px 0 16px
+        margin-bottom: 8px
+        .name, .date 
+            font-size: 16px
+            color: #a3a4a5
+        .message
+            margin: 0
+            font-size: 18px
+            color: #3e4146
+    .recipent
+        background-color: white
+        padding: 16px
+        .name, .date 
+            color: #a9adb1
+        .message
+            margin: 3px 0 5px
+    .sender
+        position: relative
+        background-color: #FCF5C9
+        margin-left: auto
+        .date
+            display: block
+            padding: 10px 0 5px
+            text-align: right
+
+.input-group
+    position: fixed
+    bottom: 0
+    width: 100%
+    padding: 10px 0
+    background-color: #3a98d3
+    form
+        display: flex
+        input
+            height: 55px
+            border-radius: 5px
+            border: 0
+        input, input[type="text"]::placeholder
+            font-size: 18px        
+            font-weight: 400
+        input[type="text"]
+            flex-grow: 1
+            padding-left: 8px !important
+            margin-right: 8px
+            border: 2px solid #4075A3
+            &:focus
+                outline: none
+            &::placeholder
+                color: #8f9194
+        input[type="submit"]
+            background-color: #EC8D74
+            color: white
+            padding: 0 20px
+            font-weight: 600
+            cursor: pointer
+            transition: background-color 1s
+            &:hover 
+                background-color: #ff876d
