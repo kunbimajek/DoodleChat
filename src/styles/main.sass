@@ -15,14 +15,14 @@ body
     margin: auto
 
 .chat-wrapper
-    padding: 16px 0 75px
+    padding: 16px 0 83px
     .chat-box
         border: 1px solid #dbdbd7
         max-width: 420px
         width: max-content
         border-radius: 5px
         padding: 16px 16px 0 16px
-        margin-bottom: 16px
+        margin-bottom: 8px
         .name, .date 
             font-size: 16px
             color: #a3a4a5
@@ -45,6 +45,8 @@ body
             display: block
             padding: 10px 0 5px
             text-align: right
+    .recipent + .sender, .sender + .recipent
+        margin-top: 16px
 
 .input-group
     position: fixed
