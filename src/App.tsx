@@ -1,5 +1,5 @@
 import api from "./components/api";
-import { useEffect, useState, useRef, FormEvent } from "react";
+import { useEffect, useState, useRef, FormEvent, useCallback } from "react";
 import ChatBox from "./components/ChatBox";
 import Loader from "./components/Loader";
 
@@ -11,28 +11,30 @@ const App = () => {
 
 	const sender = "Flora";
 
+    const getMessages = useCallback(() => {  
+        // get mesages from api and store response data in messages array
+		api.get("")
+        .then((response) => {
+            if (response.data.length > messages.length) {
+                setMessages(response.data);
+            }
+            console.log(response.data)
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
 	useEffect(() => {
 		// fetch messages when page loads
 		getMessages();
 
 		// keep fetching messages every 3 seconds
 		setInterval(getMessages, 3000);
-	}, []);
+	}, [getMessages]);
 
-	const getMessages = () => {
-		// get mesages from api and store response data in messages array
-		api.get("")
-			.then((response) => {
-				if (response.data.length > messages.length) {
-					setMessages(response.data);
-				}
-				console.log(response);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-	};
-
+    
 	const sendMessage = (e: FormEvent) => {
 		e.preventDefault();
 
@@ -58,12 +60,12 @@ const App = () => {
 	const renderChatBox = () => {
 		// loop through messages
 		return messages.map((chat: any) => {
-			console.log(chat);
 			// for each message chat, render chat boxes
 			return (
 				<ChatBox
 					key={chat._id}
 					chat={chat}
+                    // verify sender
 					sender={chat.author === sender}
 				/>
 			);
@@ -72,7 +74,7 @@ const App = () => {
 
 	return (
 		<div>
-			{messages.length < 0 ? (
+			{!messages.length ? (
 				<Loader />
 			) : (
 				<div className="chats container" ref={chats}>
