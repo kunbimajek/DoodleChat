@@ -11,20 +11,20 @@ const App = () => {
 
 	const sender = "Flora";
 
-    const getMessages = useCallback(() => {  
-        // get mesages from api and store response data in messages array
+	const getMessages = useCallback(() => {
+		// get mesages from api and store response data in messages array
 		api.get("")
-        .then((response) => {
-            if (response.data.length > messages.length) {
-                setMessages(response.data);
-            }
-            console.log(response.data)
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-        // eslint-disable-next-line react-hooks/exhaustive-deps 
-    }, [])
+			.then((response) => {
+				if (response.data.length > messages.length) {
+					setMessages(response.data);
+				}
+				console.log(response.data);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	useEffect(() => {
 		// fetch messages when page loads
@@ -34,7 +34,6 @@ const App = () => {
 		setInterval(getMessages, 3000);
 	}, [getMessages]);
 
-    
 	const sendMessage = (e: FormEvent) => {
 		e.preventDefault();
 
@@ -65,7 +64,7 @@ const App = () => {
 				<ChatBox
 					key={chat._id}
 					chat={chat}
-                    // verify sender
+					// verify sender
 					sender={chat.author === sender}
 				/>
 			);
@@ -84,12 +83,11 @@ const App = () => {
 			<div className="input-group">
 				<div className="container">
 					<form onSubmit={sendMessage}>
-						<input
-							type="text"
+						<textarea
 							placeholder="Message"
 							value={inputMessage}
 							onChange={(e) => setInputMessage(e.target.value)}
-						/>
+						></textarea>
 						<input type="submit" value="Send" />
 					</form>
 				</div>

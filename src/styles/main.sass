@@ -55,16 +55,17 @@ body
     background-color: #3a98d3
     form
         display: flex
-        input
+        input, textarea
             height: 55px
             border-radius: 5px
             border: 0
-        input, input[type="text"]::placeholder
+        input, textarea, textarea::placeholder
             font-size: 18px        
             font-weight: 400
-        input[type="text"]
+        textarea
             flex-grow: 1
             padding-left: 8px !important
+            padding-top: 14px !important
             margin-right: 8px
             border: 2px solid #4075A3
             &:focus
@@ -73,6 +74,7 @@ body
                 color: #8f9194
         input[type="submit"]
             background-color: #EC8D74
+            border-radius: 3px
             color: white
             padding: 0 20px
             font-weight: 600
@@ -86,5 +88,7 @@ body
         padding: 0
         .container
             padding: 8px
+            input[type="submit"]
+                border-radius: 3px
     .chat-box
         max-width: 240px !important
